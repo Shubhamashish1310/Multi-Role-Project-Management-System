@@ -2,6 +2,24 @@
 import { registerCompanyService } from '../services/authService.js';
 import { loginService } from '../services/authService.js';
 import { createUserService } from '../services/authService.js';
+import { listUsersService } from '../services/authService.js'; // ⬅️ make sure this is added
+
+export const listUsers = async (req, res) => {
+  try {
+    const result = await listUsersService(req.user);
+    return res.status(200).json({
+      success: true,
+      message: 'Users fetched successfully',
+      data: result,
+    });
+  } catch (error) {
+    console.error('List users error:', error);
+    return res.status(error.statusCode || 500).json({
+      success: false,
+      message: error.message || 'Something went wrong',
+    });
+  }
+};
 
 export const login = async (req, res) => {
     try {

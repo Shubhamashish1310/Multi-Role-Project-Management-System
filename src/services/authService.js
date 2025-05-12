@@ -114,4 +114,15 @@ export const loginService = async (data) => {
       company: newUser.company,
     };
   };
+
+  export const listUsersService = async (currentUser) => {
+    const users = await userRepository.getUsersByCompany(currentUser.company);
+    return users.map(user => ({
+      id: user._id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    }));
+  };
+  
   
