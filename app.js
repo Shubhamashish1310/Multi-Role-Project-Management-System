@@ -5,7 +5,7 @@ import rateLimit from 'express-rate-limit';
 import connectToMongoDB from './src/config/service-config.js';
 import authRoutes from './src/routes/authRoutes.js';
 import projectRoutes from './src/routes/projectRoutes.js';
-
+import taskRoutes from './src/routes/taskRoutes.js';
 dotenv.config();
 const app = express();
 
@@ -17,6 +17,7 @@ app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
 
 app.use('/api/auth', authRoutes); // ✅ mount route
 app.use('/api/projects', projectRoutes);
+app.use('/api/tasks', taskRoutes);
 
 app.get('/', (req, res) => res.send('API is running'));
 
