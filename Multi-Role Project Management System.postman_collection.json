@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "5e3ef656-13e4-47bb-8b07-3421f11e52bf",
+		"name": "Multi-Role Project Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38819688"
+	},
+	"item": [
+		{
+			"name": "Company Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "companyName",
+							"value": "Microsoft",
+							"type": "text"
+						},
+						{
+							"key": "companyDomain",
+							"value": "microsoft.com",
+							"type": "text"
+						},
+						{
+							"key": "adminName",
+							"value": "shubham",
+							"type": "text"
+						},
+						{
+							"key": "adminEmail",
+							"value": "shubham.ashish@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "adminPassword",
+							"value": "Starims",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register-company",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register-company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "shubham.ashish@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Starims",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User  Creation CURD",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjIyZjFjMThhNjI2NWIyOWFlYTkwNCIsImVtYWlsIjoic2h1YmhhbS5hc2hpc2hAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiY29tcGFueSI6IjY4MjIyZjFjMThhNjI2NWIyOWFlYTkwMiIsImlhdCI6MTc0NzA3Mjc1MiwiZXhwIjoxNzQ3MDczNjUyfQ.LDuvrOwUtCbc72XLrbFpcwDrnZT5l1Gup5XmHSwvtb8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Shubham",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "shubham.ashish1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Starims",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "Manager",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Project CURD",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjIyZjFjMThhNjI2NWIyOWFlYTkwNCIsImVtYWlsIjoic2h1YmhhbS5hc2hpc2hAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiY29tcGFueSI6IjY4MjIyZjFjMThhNjI2NWIyOWFlYTkwMiIsImlhdCI6MTc0NzA3NDQ0MSwiZXhwIjoxNzQ3MTYwODQxfQ.KidaVg_ZKqrF0qSknuZQjfl-6zm6rPJ27nofeD6mIy0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "WEB-Solution",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Build product catalog",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/projects/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"projects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task CURD",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MjIyZjFjMThhNjI2NWIyOWFlYTkwNCIsImVtYWlsIjoic2h1YmhhbS5hc2hpc2hAZ21haWwuY29tIiwicm9sZSI6IkFkbWluIiwiY29tcGFueSI6IjY4MjIyZjFjMThhNjI2NWIyOWFlYTkwMiIsImlhdCI6MTc0NzA3NDQ0MSwiZXhwIjoxNzQ3MTYwODQxfQ.KidaVg_ZKqrF0qSknuZQjfl-6zm6rPJ27nofeD6mIy0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Assignmnet CURD",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "have to complete the assignment till tommorow",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "Todo",
+							"type": "text"
+						},
+						{
+							"key": "project",
+							"value": "682268ea072b7353c9f3da4c",
+							"type": "text"
+						},
+						{
+							"key": "assignedTo",
+							"value": "68226813072b7353c9f3da45",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "3",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
