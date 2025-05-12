@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true })); // ✅ Optional but useful
-app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }));
+app.use(rateLimit({ windowMs: 15 * 60 * 1000, max: 20, message: 'Too many requests, please try again later.' })); // ✅ Rate limiting
 
 app.use('/api/auth', authRoutes); // ✅ mount route
 app.use('/api/projects', projectRoutes);
