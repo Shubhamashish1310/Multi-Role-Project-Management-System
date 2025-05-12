@@ -22,21 +22,33 @@ export const createTaskService = async (data, currentUser) => {
 };
 
 export const getTasksService = async (currentUser, query) => {
-  const filters = {};
-  if (query.status) filters.status = query.status;
-  if (query.assignedTo) filters.assignedTo = query.assignedTo;
-
-  const tasks = await taskRepository.getTasksWithFilters(currentUser.company, filters);
-
-  return tasks.map(task => ({
-    id: task._id,
-    title: task.title,
-    description: task.description,
-    status: task.status,
-    project: task.project?.name || null,
-    assignedTo: task.assignedTo?.email || null,
-  }));
-};
+    const filters = {};
+    if (query.status) filters.status = query.status;
+    if (query.assignedTo) filters.assignedTo = query.assignedTo;
+  
+    const page = parseInt(query.page) || 1;
+    const limit = parseInt(query.limit) || 10;
+  
+    const { tasks, total } = await taskRepository.getTasksWithFilters(currentUser.company, filters, page, limit);
+  
+    const formatted = tasks.map(task => ({
+      id: task._id,
+      title: task.title,
+      description: task.description,
+      status: task.status,
+      project: task.project?.name || null,
+      assignedTo: task.assignedTo?.email || null,
+    }));
+  
+    return {
+      tasks: formatted,
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    };
+  };
+  
 
 export const updateTaskService = async (id, data, currentUser) => {
   const task = await taskRepository.getById(id);
@@ -69,3 +81,6 @@ export const deleteTaskService = async (id, currentUser) => {
   await taskRepository.delete(id);
   return { message: 'Task deleted successfully' };
 };
+
+
+  
