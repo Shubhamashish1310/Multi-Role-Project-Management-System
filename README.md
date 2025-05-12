@@ -143,6 +143,8 @@ You can test all endpoints using the included Postman collection:
 ![alt text](/Images/image-1.png)
 - Task CRUD
 ![alt text](/Images/image-2.png)
+- Mongo Compass
+![alt text](/Images/image%20copy.png)
 
 ## 🧪 Testing
 
